@@ -5,14 +5,14 @@
 
 typedef struct hashPalavras tHashPalavras;
 typedef struct listaPalavra tListaPalavra;
-tHashPalavras * Hash_cria_palavra();
-void Hash_adiciona_palavra(tHashPalavras * hashPalavras, char* palavra, int documento);
-void Hash_imprime(tHashPalavras * hashPalavras, int documento);
-tPalavra * Obtem_palavra(tListaPalavra * listaPalavra);
-tListaPalavra* ObtemNoPalavra(tHashPalavras * hash,int posicao);
-tListaPalavra ** ObtemListaPalavra(tHashPalavras * hash);
-tListaPalavra* AtribuiProxNo(tListaPalavra * lista);
-int Obtem_idc_max(tHashPalavras * hash);
-void destroiHashPalavras(tHashPalavras * h);
+tHashPalavras *Hash_cria();
+void Hash_adiciona_palavra(tHashPalavras *, char *, int);
+void Hash_imprime(tHashPalavras *, int);
+tPalavra *Hash_get_palavra(tListaPalavra *);
+tListaPalavra *Hash_get_no_palavra(tHashPalavras *, int);
+tListaPalavra **Hash_get_lista_palavras(tHashPalavras *);
+tListaPalavra *Hash_atribui_prox_no(tListaPalavra *);
+int Hash_get_idc_max(tHashPalavras *);
+void Hash_destroi(tHashPalavras *);
 
 #endif

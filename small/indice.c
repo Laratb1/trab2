@@ -4,12 +4,14 @@
 #include "tHashPalavras.h"
 #include "tListas.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     tListas *l;
     char temp[125];
     FILE *arqNomeDoc = fopen(argv[1], "r");
     sscanf(argv[1], "%[^.].txt", temp);
-    if (!arqNomeDoc) {
+    if (!arqNomeDoc)
+    {
         printf("ARQUIVO NAO ENCONTRADO");
         exit(1);
     }
@@ -19,22 +21,23 @@ int main(int argc, char *argv[]) {
 
     // FILE *arqListadosDocs = fopen(argv[1], "r");
 
-    if (arqNomeDoc == NULL) {
+    if (arqNomeDoc == NULL)
+    {
         printf("ERRO: Arquivo %s nao encontrado!\n", argv[1]);
-        return 1;  // VER SE VAI SAIR SEM FINALIZAR TUDO
+        return 1; // VER SE VAI SAIR SEM FINALIZAR TUDO
     }
 
     l = Listas_ler_train(temp, arqNomeDoc);
-    
-    tHashPalavras *hash = Lista_get_hash(l);
-    l=Listas_atribui_vetor_palavras(l,hash);
-    Lista_ordena_vetor(l);
-    //GeraBinario(l,argv[2]);
-    Lista_imprime_vet_palavras(l);
 
-    //imprimeHash(hash, 999);
+    tHashPalavras *hash = Listas_get_hash(l);
+    l = Listas_atribui_vetor_palavras(l, hash);
+    Listas_ordena_vetor(l);
+    // GeraBinario(l,argv[2]);
+    Listas_imprime_vet_palavras(l);
 
-    Lista_destroi(l);
+    // imprimeHash(hash, 999);
+
+    Listas_destroi(l);
     fclose(arqNomeDoc);
 
     return 0;
